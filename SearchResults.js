@@ -47,7 +47,12 @@ class ListItem extends React.PureComponent {
 
   render() {
     const item = this.props.item;
-    const price = item.price_formatted.split(' ')[0];
+    var price = item.price_formatted
+    if (typeof price != 'undefined') {
+        price = item.price_formatted.split(' ')[0];
+      } else {
+        price = 'error'
+      }
     return (
       <TouchableHighlight
         onPress={this._onPress}
